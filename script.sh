@@ -1,6 +1,5 @@
-﻿# Escriba su código aquí
-for file in *.csv;do sed '/^.$/d' $file > "$(basename "$file" .csv).1.csv"; done
-for file in *.1.csv; do awk '{print NR "," $s}' $file > "$(basename "$file" .csv).2.csv"; done
+for file in *.csv;do sed '/^.$/d' $file > "$(basename "$file" .csv).1.csv";done
+for file in *.1.csv;do awk '{print NR "," $s}' $file > "$(basename "$file" .csv).2.csv";done
 for file in *.2.csv;do sed "s/^/"${file}\,"/" $file > "$(basename "$file" .csv).3.csv";done
 for file in *.3.csv;do sed 's/[[:space:]]//g' $file > "$(basename "$file" .csv).4.csv";done
 for file in *.4.csv;do sed 's/\([A-Z]\)/\1,/g' $file > "$(basename "$file" .csv).5.csv";done
